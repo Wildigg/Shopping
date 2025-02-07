@@ -19,7 +19,6 @@ module.exports = class CartItem {
         if (articleId < 0) {
             throw new InvalidArticleIdException();
         }
-        
 	    this.#articleId = articleId
 	    this.#name = name
         //ToDo replace with call to setters
@@ -28,15 +27,15 @@ module.exports = class CartItem {
     }
 
     get articleId() {
-        throw new Error();
+        return this.#articleId
     }
 
     get name() {
-        throw new Error();
+        return this.#name
     }
 
     get quantity() {
-        throw new Error();
+        return this.#quantity
     }
 
     set quantity(value) {
@@ -44,7 +43,7 @@ module.exports = class CartItem {
     }
 
     get price() {
-        throw new Error();
+        return this.#price
     }
 
     set price(value) {
@@ -52,7 +51,7 @@ module.exports = class CartItem {
     }
 
     get total() {
-        throw new Error();
+        return this.#quantity * this.price
     }
     //endregion public methods
 
