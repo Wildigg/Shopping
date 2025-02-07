@@ -1,0 +1,36 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+
+class CartItem {
+  - articleId : int
+  - name : string
+  - quantity : int
+  - price : int
+  + <get>articleId() : int
+  + <get>name() : string
+  + <get,set>quantity() : int
+  + <get,set>price() : int
+  + <get>total() : int
+}
+
+exception CartItemException {
+}
+
+exception InvalidArticleIdException {
+}
+
+exception InvalidQuantityException {
+}
+
+exception InvalidPriceException {
+}
+
+
+InvalidArticleIdException --|> CartItemException
+InvalidQuantityException --|> CartItemException
+InvalidPriceException --|> CartItemException
+InvalidArticleIdException --+ CartItem
+InvalidQuantityException --+ CartItem
+InvalidPriceException --+ CartItem
+@enduml
