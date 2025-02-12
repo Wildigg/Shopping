@@ -22,7 +22,7 @@ module.exports = class CartItem {
 	    this.#articleId = articleId
 	    this.#name = name
         //ToDo replace with call to setters
-        this.#quantity = quantity
+        this.quantity = quantity
         this.#price = price
     }
 
@@ -39,7 +39,11 @@ module.exports = class CartItem {
     }
 
     set quantity(value) {
-        throw new Error();
+        if (value < 1) {
+            throw new InvalidQuantityException();
+        }
+
+        this.#quantity = value
     }
 
     get price() {
