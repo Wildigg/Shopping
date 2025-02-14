@@ -25,6 +25,16 @@ module.exports = class CartItem {
     set items(value) {
         this.#items = value
     }
+
+    get total() {
+        let total = 0
+
+        for (let item of this.items) {
+            total += item.total
+        }
+
+        return total
+    }
     //endregion public methods
 
     //region private methods
