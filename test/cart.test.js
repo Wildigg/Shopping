@@ -26,7 +26,7 @@ test('items_EmptyCart_ThrowException', () => {
     let cart = new Cart(null);
 
     //when
-    //Event triggered by th assertion
+    //Event triggered by the assertion
 
     //then
     expect(() => cart.items).toThrow(EmptyCartException);
@@ -41,7 +41,7 @@ test('total_NominalCase_GetsSum', () => {
     let totalPriceExpected = 50;
 
     //when
-    //Event triggered by th assertion
+    //Event triggered by the assertion
 
     //then
     expect(cart.total).toEqual(totalPriceExpected);
@@ -52,7 +52,7 @@ test('total_EmptyCart_ThrowException', () => {
     let cart = new Cart(null);
 
     //when
-    //Event triggered by th assertion
+    //Event triggered by the assertion
 
     //then
     expect(() => cart.total).toThrow(EmptyCartException);
@@ -67,7 +67,7 @@ test('count_OnlySingleQuantityProduct_GetsNumberOfItems', () => {
     let countExpected = 2;
 
     //when
-    //Event triggered by th assertion
+    //Event triggered by the assertion
 
     //then
     expect(cart.count()).toEqual(countExpected);
@@ -82,7 +82,7 @@ test('count_MixSingleAndMultipleQuantityProduct_GetsNumberOfItems', () => {
     let countExpected = 3;
 
     //when
-    //Event triggered by th assertion
+    //Event triggered by the assertion
 
     //then
     expect(cart.count()).toEqual(countExpected);
@@ -97,7 +97,7 @@ test('count_MixSingleAndMultipleQuantityProductDistinct_GetsNumberOfItems', () =
     let countExpected = 2;
 
     //when
-    //Event triggered by th assertion
+    //Event triggered by the assertion
 
     //then
     expect(cart.count(true)).toEqual(countExpected);
@@ -108,7 +108,7 @@ test('count_EmptyCart_ThrowException', () => {
     let cart = new Cart(null);
 
     //when
-    //Event triggered by th assertion
+    //Event triggered by the assertion
 
     //then
     expect(() => cart.count()).toThrow(EmptyCartException);

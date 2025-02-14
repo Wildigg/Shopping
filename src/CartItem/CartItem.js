@@ -21,7 +21,6 @@ module.exports = class CartItem {
         }
 	    this.#articleId = articleId
 	    this.#name = name
-        //ToDo replace with call to setters
         this.quantity = quantity
         this.price = price
     }
