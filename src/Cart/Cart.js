@@ -35,6 +35,18 @@ module.exports = class CartItem {
 
         return total
     }
+
+    add(value) {
+        if (value == null) {
+            throw new UpdateCartException();
+        }
+
+        if (this.#items == null) {
+            this.#items = value
+        } else {
+            this.#items = this.#items.concat(value)
+        }
+    }
     //endregion public methods
 
     //region private methods
