@@ -18,7 +18,7 @@ class Cart {
   - items : CartItem[]
   + Cart(items: CartItem[])
   + <get,set>items() : CartItem[]
-  + total() : int
+  + <get>total() : int
   + count(placeholder : boolean = False) : int
   + add(item : CartItem)
 }
