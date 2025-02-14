@@ -15,6 +15,10 @@ module.exports = class CartItem {
     }
 
     get items() {
+        if (this.#items == null) {
+            throw new EmptyCartException();
+        }
+
         return this.#items
     }
 
