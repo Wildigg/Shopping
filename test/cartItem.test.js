@@ -19,7 +19,6 @@ test('constructor_NominalCase_PropertiesGetRightValues', () => {
 
     //then
     expect(articleId).toEqual(cartItem.articleId);
-    expect(articleId).toEqual(cartItem.articleId);
     expect(quantity).toEqual(cartItem.quantity);
     expect(price).toEqual(cartItem.price);
     expect(total).toEqual(cartItem.total);
