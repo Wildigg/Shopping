@@ -9,7 +9,6 @@ class CartItem {
   - price : float
   + CartItem(articleId : int, name : string, quantity : int, price : float)
   + <get>articleId() : int
-  + <get>name() : string
   + <get,set>quantity() : int
   + <get,set>price() : int
   + total() : int
@@ -36,6 +35,9 @@ exception InvalidQuantityException {
 exception InvalidPriceException {
 }
 
+exception CartException {
+}
+
 exception EmptyCartException {
 }
 
@@ -50,6 +52,8 @@ InvalidPriceException --|> CartItemException
 InvalidArticleIdException --+ CartItem
 InvalidQuantityException --+ CartItem
 InvalidPriceException --+ CartItem
+EmptyCartException --|> CartException
+UpdateCartException --|> CartException
 EmptyCartException --+ Cart
 UpdateCartException --+ Cart
 @enduml
