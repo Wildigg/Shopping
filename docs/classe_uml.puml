@@ -11,7 +11,7 @@ class CartItem {
   + <get>articleId() : int
   + <get,set>quantity() : int
   + <get,set>price() : int
-  + total() : int
+  + <get>total() : int
 }
 
 class Cart {
