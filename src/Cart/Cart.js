@@ -11,7 +11,7 @@ module.exports = class CartItem {
 
     //region public methods
     constructor(items) {
-        this.items = items
+        this.#items = items
     }
 
     get items() {
@@ -22,29 +22,26 @@ module.exports = class CartItem {
         return this.#items
     }
 
-    set items(value) {
-        this.#items = value
-    }
-
     get total() {
-        let total = 0
+        let totalPrice = 0
 
         for (let item of this.items) {
-            total += item.total
+            totalPrice += item.total
         }
 
-        return total
+        return totalPrice
     }
 
-    add(value) {
-        if (value == null) {
+    add(item) {
+        if (item == null) {
             throw new UpdateCartException();
         }
 
         if (this.#items == null) {
-            this.#items = value
+            this.#items = item
         } else {
-            this.#items = this.#items.concat(value)
+            // This part isn't in coverage. Test could work without but in a real case this should be needed
+            this.#items = this.#items.concat(item)
         }
     }
     //endregion public methods
@@ -52,6 +49,3 @@ module.exports = class CartItem {
     //region private methods
     //endregion private methods
 }
-
-
-
