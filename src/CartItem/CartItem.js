@@ -15,23 +15,18 @@ module.exports = class CartItem {
 
     //region public methods
     constructor(articleId, name, quantity, price) {
-
         if (articleId < 0) {
             throw new InvalidArticleIdException();
         }
+
 	    this.#articleId = articleId
 	    this.#name = name
-        //ToDo replace with call to setters
         this.quantity = quantity
         this.price = price
     }
 
     get articleId() {
         return this.#articleId
-    }
-
-    get name() {
-        return this.#name
     }
 
     get quantity() {
@@ -66,6 +61,3 @@ module.exports = class CartItem {
     //region private methods
     //endregion private methods
 }
-
-
-

@@ -6,12 +6,22 @@ class CartItem {
   - articleId : int
   - name : string
   - quantity : int
-  - price : int
+  - price : float
+  + CartItem(articleId : int, name : string, quantity : int, price : float)
   + <get>articleId() : int
-  + <get>name() : string
   + <get,set>quantity() : int
   + <get,set>price() : int
+  + <get>total() : float
+}
+
+class Cart {
+  - items : CartItem[]
+  + Cart(items: CartItem[])
+  + <get>items() : CartItem[]
   + <get>total() : int
+  + count(placeholder : boolean = False) : int
+  + add(item : CartItem)
+  + <get>total() : float
 }
 
 exception CartItemException {
@@ -26,11 +36,25 @@ exception InvalidQuantityException {
 exception InvalidPriceException {
 }
 
+exception CartException {
+}
 
+exception EmptyCartException {
+}
+
+exception UpdateCartException {
+}
+
+
+CartItem --o Cart
 InvalidArticleIdException --|> CartItemException
 InvalidQuantityException --|> CartItemException
 InvalidPriceException --|> CartItemException
 InvalidArticleIdException --+ CartItem
 InvalidQuantityException --+ CartItem
 InvalidPriceException --+ CartItem
+EmptyCartException --|> CartException
+UpdateCartException --|> CartException
+EmptyCartException --+ Cart
+UpdateCartException --+ Cart
 @enduml
