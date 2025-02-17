@@ -61,6 +61,3 @@ module.exports = class CartItem {
     //region private methods
     //endregion private methods
 }
-
-
-
