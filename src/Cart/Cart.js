@@ -32,6 +32,24 @@ module.exports = class CartItem {
         return totalPrice
     }
 
+    count(distinct = false) {
+        if (this.#items == null) {
+            throw new EmptyCartException();
+        }
+
+        let totalQuantity = 0
+
+        if (distinct) {
+            totalQuantity =  this.#items.length
+        } else {
+            for (let item of this.items) {
+                totalQuantity += item.quantity
+            }
+        }
+
+        return totalQuantity
+    }
+
     add(item) {
         if (item == null) {
             throw new UpdateCartException();
