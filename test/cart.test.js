@@ -11,7 +11,9 @@ const CartItemMock = jest.fn().mockImplementation((articleId , name, quantity, p
         name,
         quantity,
         price,
-        get total() {},
+        get total() {
+            return quantity * price
+        },
         updateQuantity: jest.fn().mockImplementation((newQuantity) => {
             if (newQuantity < 1) throw new InvalidQuantityException();
             quantity = newQuantity;
@@ -159,8 +161,8 @@ test('add_EmptyCartEmptyItemsToAdd_supportNullItems', () => {
     //given
     let expectedPriceCartItem1 = 11;
     let expectedPriceCartItem2 = 12;
-    let cartItem1 = new CartItem(1,"Iphone 27",1, expectedPriceCartItem1);
-    let cartItem2 = new CartItem(2,"Iphone 28",1, expectedPriceCartItem2);
+    let cartItem1 = new CartItemMock(1,"Iphone 27",1, expectedPriceCartItem1);
+    let cartItem2 = new CartItemMock(2,"Iphone 28",1, expectedPriceCartItem2);
     let cart = new Cart([cartItem1]);
 
     //when
