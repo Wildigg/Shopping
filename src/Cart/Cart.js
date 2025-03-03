@@ -58,7 +58,6 @@ module.exports = class CartItem {
         if (this.#items == null) {
             this.#items = item
         } else {
-            // This part isn't in coverage. Test could work without but in a real case this should be needed
             this.#items = this.#items.concat(item)
         }
     }
