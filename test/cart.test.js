@@ -4,6 +4,21 @@ const CartItem = require("../src/CartItem/CartItem.js");
 const EmptyCartException = require("../src/Cart/EmptyCartException.js");
 const UpdateCartException = require("../src/Cart/UpdateCartException.js");
 
+//ToDo Not fully sure, if need to make full mockup or only for what is needed. To confirm next RIA1 class
+const CartItemMock = jest.fn().mockImplementation((articleId , name, quantity, price) => {
+    return {
+        articleId,
+        name,
+        quantity,
+        price,
+        get total() {},
+        updateQuantity: jest.fn().mockImplementation((newQuantity) => {
+            if (newQuantity < 1) throw new InvalidQuantityException();
+            quantity = newQuantity;
+        }),
+    };
+});
+
 test('items_NominalCase_GetItems', () => {
     //given
     let cartItem1 = new CartItem(1,"Iphone 27", 1,10);
@@ -138,4 +153,19 @@ test('add_EmptyCartEmptyItemsToAdd_ThrowException', () => {
 
     //then
     //Exception is thrown
+})
+
+test('add_EmptyCartEmptyItemsToAdd_supportNullItems', () => {
+    //given
+    let expectedPriceCartItem1 = 11;
+    let expectedPriceCartItem2 = 12;
+    let cartItem1 = new CartItem(1,"Iphone 27",1, expectedPriceCartItem1);
+    let cartItem2 = new CartItem(2,"Iphone 28",1, expectedPriceCartItem2);
+    let cart = new Cart([cartItem1]);
+
+    //when
+    cart.add(cartItem2);
+
+    //then
+    expect(cart.total).toEqual(expectedPriceCartItem1 + expectedPriceCartItem2);
 })
